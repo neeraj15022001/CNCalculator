@@ -1,7 +1,7 @@
 {
-  "short_name": "Biolerplate",
-  "name": "Biolerplate",
-  "description": "description",
+  "short_name": "Calculator",
+  "name": "Calculator",
+  "description": "Calculator",
   "icons": [
     {
       "src": "icons/manifest-icon-192.png",
@@ -19,6 +19,6 @@
   "background_color": "#ffffff",
   "theme_color": "#000000",
   "start_url": "./",
-  "display": "standalone",
-  "orientation": "any"
+  "display": "fullscreen",
+  "orientation": "potrait"
 }
