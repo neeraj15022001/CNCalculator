@@ -1,116 +1,116 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 :root {
-    --theme-purple: #6D83E6;
-    --theme-grey: #424242;
+  --theme-purple: #6d83e6;
+  --theme-grey: #424242;
 }
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 body {
-    background-color: var(--theme-grey);
-    display: grid;
-    place-items: center;
-    height: 100vh;
-    user-select: none;
+  background-color: var(--theme-grey);
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  user-select: none;
 }
 .github-banner {
-    background-color: white;
-    padding: 16px;
-    font-size: 1.8rem;
-    width: 80px;
-    height: 80px;
-    clip-path: polygon(0 0, 100% 0, 100% 100%);
-    position: absolute;
-    top:0;
-    right: 0;
+  background-color: white;
+  padding: 16px;
+  font-size: 1.8rem;
+  width: 80px;
+  height: 80px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 .github-banner a {
-    text-decoration: none;
+  text-decoration: none;
 }
 .github-banner i {
-    position: absolute;
-    top:50%;
-    right: 50%;
-    transform: translate(100%, -80%);
-    color: black;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(100%, -80%);
+  color: black;
 }
 .calc-body {
-    width: 270px;
-    background-color: var(--theme-grey);
-    border-radius: 16px;
-    padding: 118px 16px 48px;
-    box-shadow: 8px 8px 15px 1px rgba(0, 0, 0, 0.2);
-    transition: 0.1s ease-in-out;
-    position: relative;
+  width: 270px;
+  background-color: var(--theme-grey);
+  border-radius: 16px;
+  padding: 118px 16px 48px;
+  box-shadow: 8px 8px 15px 1px rgba(0, 0, 0, 0.2);
+  transition: 0.1s ease-in-out;
+  position: relative;
 }
 .toggler {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    color: white;
-    font-size: 1.5rem;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  color: white;
+  font-size: 1.5rem;
 }
 .upper {
-    height: 30%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 .upper-operation-screen {
-    text-align: right;
-    font-size: 0.8rem;
-    color: white;
-    overflow: auto;
+  text-align: right;
+  font-size: 0.8rem;
+  color: white;
+  overflow: auto;
 }
 .lower-result-screen {
-    text-align: right;
-    color: var(--theme-purple) !important;
-    font-size: 3rem;
-    overflow: auto;
+  text-align: right;
+  color: var(--theme-purple) !important;
+  font-size: 3rem;
+  overflow: auto;
 }
 .grid {
-    height: 70%;
-    display: grid;
-    grid-template-columns:  repeat(4, 1fr);
-    grid-template-rows: repeat(5,1fr);
-    grid-gap: 10px;
+  height: 70%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 10px;
 }
 .grid-item {
-    transition: 0.1s ease-in-out;
-    background-color: var(--theme-grey);
-    border: 0;
-    color: white;
-    outline: none;
-    padding: 8px;
-    border-radius: 50%;
-    height: 48px;
-    width: 48px;
-    font-size: 1.1rem;
+  transition: 0.1s ease-in-out;
+  background-color: var(--theme-grey);
+  border: 0;
+  color: white;
+  outline: none;
+  padding: 8px;
+  border-radius: 50%;
+  height: 48px;
+  width: 48px;
+  font-size: 1.1rem;
 }
 .neu-button {
-    box-shadow: -3px -3px 8px rgba(255, 255, 255, 0.1), 3px 3px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: -3px -3px 8px rgba(255, 255, 255, 0.1),
+    3px 3px 8px rgba(0, 0, 0, 0.4);
 }
 .operator {
-    color: var(--theme-purple) !important;
-    font-weight: 600;
+  color: var(--theme-purple) !important;
+  font-weight: 600;
 }
 .equal-button {
-    background-color: var(--theme-purple) !important;
-    color: white !important;
-    border-radius: 32px;
-    width: auto;
-    grid-column: span 2;
+  background-color: var(--theme-purple) !important;
+  color: white !important;
+  border-radius: 32px;
+  width: auto;
+  grid-column: span 2;
 }
 footer.copyright {
-    color: white;
-    position: absolute;
-    bottom: 8px;
-    font-size: 0.8rem;
-    left: 0;
-    right: 0;
-    text-align: center;
+  color: white;
+  position: absolute;
+  bottom: 8px;
+  font-size: 0.8rem;
+  left: 0;
+  right: 0;
+  text-align: center;
 }
