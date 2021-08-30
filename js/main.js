@@ -19,46 +19,46 @@ buttons.forEach((button) => {
     const input = button.innerHTML;
     switch (input) {
       case "0":
-        operationString += "0 ";
+        operationString += "0";
         break;
       case "1":
-        operationString += "1 ";
+        operationString += "1";
         break;
       case "2":
-        operationString += "2 ";
+        operationString += "2";
         break;
       case "3":
-        operationString += "3 ";
+        operationString += "3";
         break;
       case "4":
-        operationString += "4 ";
+        operationString += "4";
         break;
       case "5":
-        operationString += "5 ";
+        operationString += "5";
         break;
       case "6":
-        operationString += "6 ";
+        operationString += "6";
         break;
       case "7":
-        operationString += "7 ";
+        operationString += "7";
         break;
       case "8":
-        operationString += "8 ";
+        operationString += "8";
         break;
       case "9":
-        operationString += "9 ";
+        operationString += "9";
         break;
       case "+":
-        operationString += "+ ";
+        operationString += "+";
         break;
       case "-":
-        operationString += "- ";
+        operationString += "-";
         break;
       case "×":
-        operationString += "* ";
+        operationString += "*";
         break;
       case "÷":
-        operationString += "/ ";
+        operationString += "/";
         break;
       case ".":
         operationString = operationString.trim();

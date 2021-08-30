@@ -1,58 +1,44 @@
-importScripts(
-  "https://storage.googleapis.com/workbox-cdn/releases/6.1.1/workbox-sw.js"
-);
-
-// This will work!
-workbox.routing.registerRoute(
-  ({ request }) => request.destination === "image",
-  new workbox.strategies.CacheFirst()
-);
-
-// With the Network-Falling-Back-To-Cache strategy, your service worker will first try to retrieve the resource from your server. Then when it can’t do that — because for example, you’re offline — retrieve it from the cache (if it exists there).
-self.addEventListener("fetch", function (event) {
-  event.respondWith(
-    (async function () {
-      try {
-        var res = await fetch(event.request);
-        var cache = await caches.open("cache");
-        if (cache) {
-          cache.put(event.request.url, res.clone());
-        }
-        return res;
-      } catch (error) {
-        return caches.match(event.request);
-      }
-    })()
-  );
-});
-
-// With the Stale-While-Revalidate strategy, your service worker first looks into the cache while also issuing the request to the server. If the resource exists in the cache, it will send it back to the client right away — resulting in a seemingly instantaneous load. When (and if) the server responds to the request successfully, it will save the updated response in the cache. The main drawback of this approach is that resources that you’ll serve will always be one version behind.
-self.addEventListener("fetch", function (event) {
-  event.respondWith(
-    (async function () {
-      var cache = await caches.open("cache");
-      var cachedResponsePromise = await cache.match(event.request);
-      var networkResponsePromise = fetch(event.request);
-      event.waitUntil(
-        (async function () {
-          var networkResponse = await networkResponsePromise;
-          await cache.put(event.request, networkResponse.clone());
-        })()
-      );
-      return cachedResponsePromise || networkResponsePromise;
-    })()
-  );
-});
-
-self.addEventListener("install", function (event) {
+// documented by Neeraj Gupta - https://neerajgupta.codes
+self.addEventListener("install", (event) => {
+  console.log("Service worker install event!");
+  //   event.waitUntil will wait until innermost event is resolved
+  // waitUntil will prevent the browser to terminate the service worker process before promise is resolved
+  // read about waitUntil here - https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil
   event.waitUntil(
-    caches.open("cache").then(function (cache) {
-      return cache.addAll([
-        "./",
-        "./index.html",
-        "./css/style.css",
-        "./js/main.js",
-      ]);
-    })
+    //   Open cache(cacheName) from CacheStorage and if opened add all resourcesToPrecache in CacheStorage
+    caches
+      .open(cacheName)
+      .then((cache) => cache.addAll(resourcesToPrecache))
+      .catch((err) => console.log("Faled to precache", err))
   );
 });
+
+self.addEventListener("activate", (event) => console.log("Activate event"));
+
+// fetching files from either cache or network
+self.addEventListener("fetch", (event) => {
+  // respondWith will prevent browser to directly go and do fetch request instead provide user with power to do task manually depending on promise
+  // read about respondWith here - https://developer.mozilla.org/en-US/docs/Web/API/FetchEvent/respondWith
+  event.respondWith(
+    caches
+      .match(event.request)
+      .then((cachedResponse) => cachedResponse || fetch(event.request)) //returning cache or if not available fetching from event
+  );
+});
+
+self.addEventListener("push", (event) => {
+  const title = "Yes, a message";
+  const body = "We have received a push message";
+  const tag = "simple-push-example-tag";
+  const options = {
+    body: body,
+    tag: tag,
+  };
+
+  event.waitUntil(self.registration.showNotification(title, options));
+});
+
+// Pre Caching resources
+
+const cacheName = "cache-v1";
+const resourcesToPrecache = ["/", "/index.html"];
